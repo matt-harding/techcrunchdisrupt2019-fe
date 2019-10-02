@@ -1,32 +1,31 @@
 <template>
+<div>
   <div class="splash">
     <div class="logo-block">
-      <!-- <h1>Techcrunch Disrupt 2019</h1> -->
       <Graph/>
+      <button class="button" v-on:click="openModal()"> Add Report</button>
     </div>
   </div>
+  <Modal/>
+</div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import Graph from '@/components/Graph.vue';
+import Modal from '@/components/Modal.vue';
 import api from '@/api/api';
 
 @Component({
   components: {
-    Graph
+    Graph,
+    Modal
   },
 })
 export default class Splash extends Vue {
-  
-  get testData() {
-    return this.$store.state.general.testData;
-  }
-
-  async mounted () {
-    const apiPath = process.env.VUE_APP_BACKEND_URL || '';
-    let data = await api.getTestData(apiPath);
-    this.$store.commit('setTestData', data);
+  private openModal() {
+    this.$store.commit("setModalTitle", "Disease Reporting");
+    this.$store.commit("setModalActive", true);
   }
 }
 </script>

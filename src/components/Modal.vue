@@ -14,6 +14,7 @@
             <div></div>
           </div>
         </div>
+        <TestForm/>
       </section>
       <footer class="modal-card-foot">
         <div class="buttons">
@@ -26,9 +27,12 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import TestForm from '@/components/TestForm.vue';
 
 @Component({
-  components: {}
+  components: {
+    TestForm
+  }
 })
 export default class Modal extends Vue {
   get showModal() {

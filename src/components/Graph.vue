@@ -9,7 +9,7 @@ const NeoVis = require('neovis.js');
 @Component({
   components: {}
 })
-export default class Splash extends Vue {
+export default class Graph extends Vue {
   viz: any;
   draw() {
     var config = {
@@ -40,7 +40,7 @@ export default class Splash extends Vue {
   }
 
   async mounted() {
-      this.draw();
+    this.draw();
   }
 }
 </script>
