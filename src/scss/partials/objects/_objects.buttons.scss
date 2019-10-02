@@ -1,0 +1,105 @@
+.button {
+    &.button-outline {
+        position: relative;
+        border: 1px solid #fff;
+        color: #fff;
+        background-color: transparent;
+        overflow: hidden;
+        transition: color 250ms ease;
+        z-index: 1;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #fff;
+            transform: translateY(100%);
+            transition: transform 250ms ease;
+            z-index: -1;
+        }
+
+        &:hover,
+        &:focus {
+            color: $grey-50;
+            &::after {
+                transform: translateY(0)
+            }
+        }
+    }
+
+    &.button-primary {
+        background-color: $green;
+        border-color: $green;
+        color: $grey-250;
+        &:hover,
+        &:focus {
+            background-color: $green;
+            border-color: $green;
+        }
+
+        &.button-outline {
+            color: $green;
+            background-color: transparent;
+
+            &::after {
+                background-color: $green;
+            }
+
+            &:hover,
+            &:focus {
+                color: $grey-250;
+            }
+        }
+    }
+
+    &.button-secondary {
+        background-color: $grey-220;
+        border-color: $grey-220;
+        color: $grey-120;
+        &:hover,
+        &:focus {
+            background-color: $grey-120;
+            border-color: $grey-120;
+            color: $white;
+        }
+
+        &.button-outline {
+            color: $grey-220;
+            background-color: transparent;
+
+            &::after {
+                background-color: $grey-220;
+            }
+
+            &:hover,
+            &:focus {
+                border-color: $grey-220;
+                color: $grey-120;
+            }
+        }
+    }
+
+    &.button-medium {
+        padding-left: 1.6em;
+        padding-right: 1.6em;
+        padding-top: 0;
+        padding-bottom: 2px;
+        font-size: 1.1rem;
+        line-height: 2.2rem;
+        font-weight: 600;
+    }
+
+    &.button-large {
+        padding-left: 2.2em;
+        padding-right: 2.2em;
+        padding-top: 0;
+        padding-bottom: 2px;
+        font-size: 1.5rem;
+        line-height: 2.5rem;
+        font-weight: 600;
+    }
+
+}
