@@ -1,17 +1,20 @@
 <template>
   <div class="splash">
     <div class="logo-block">
-      <h1>Techcrunch Disrupt 2019</h1>
+      <!-- <h1>Techcrunch Disrupt 2019</h1> -->
+      <Graph/>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import Graph from '@/components/Graph.vue';
 import api from '@/api/api';
 
 @Component({
   components: {
+    Graph
   },
 })
 export default class Splash extends Vue {
