@@ -6,7 +6,7 @@
         <p class="level-item">
           <button class="button button-primary" v-on:click="filterGraph()">
             <span class="icon">
-              <i class="material-icons">filter_drama</i>
+              <i class="material-icons">bug_report</i>
             </span>
             <span>Filter For Infection Risk</span>
           </button>
@@ -45,18 +45,19 @@ export default class Graph extends Vue {
       server_user: "neo4j",
       server_password: "techcrunch",
       labels: {
-        Character: {
-          caption: "id",
-          size: "centrality"
+                    "Animal": {
+                        "caption": "name",
+                        "size": "pagerank",
+                        "community": "community"
+                    }
+                },
+      relationships: {
+        LINKS: {
+          thickness: "weight",
+          caption: false
         }
       },
-      // relationships: {
-      //   INTERACTS: {
-      //     thickness: "weight",
-      //     caption: false
-      //   }
-      // },
-      initial_cypher: "MATCH (n)-[r:LINK]->(m) RETURN n,r,m"
+      initial_cypher: "MATCH p=()-->() RETURN p LIMIT 200"
     };
     this.viz = new NeoVis.default(config);
     this.viz.registerOnEvent("completed", this.render_completed);
@@ -72,7 +73,7 @@ export default class Graph extends Vue {
   }
 
   filterGraph() {
-    this.viz.renderWithCypher("MATCH (n)-[r:LINK]->(m) RETURN n,r,m")
+    this.viz.renderWithCypher("MATCH p=()-->() RETURN p")
   }
 
   get nodes() {
@@ -95,5 +96,13 @@ export default class Graph extends Vue {
   padding: 0;
   margin-top: 10px !important;
   margin-bottom: 10px !important;
+}
+
+canvas {
+  max-height: calc(100vh - 200px);
+}
+
+.vis-network {
+    max-height: calc(100vh - 200px);
 }
 </style>
