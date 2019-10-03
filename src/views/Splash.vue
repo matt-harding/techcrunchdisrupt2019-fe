@@ -30,7 +30,7 @@ export default class Splash extends Vue {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: calc(100vh - 67px);
+    height: calc(100vh - 134px);
     width: 100%;
     padding: 0 40px;
 

@@ -43,6 +43,6 @@ export default class Graph extends Vue {
 </script>
 <style lang="scss">
   #viz {
-    border: 2px solid black;
+    border: 2px solid #dcdcdc;
   }
 </style>

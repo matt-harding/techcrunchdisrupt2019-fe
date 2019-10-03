@@ -4,7 +4,7 @@
       <img src="./../assets/Pawgraphlogo.svg" alt="Project name logo" />
     </a>
     <nav class="header-nav">
-      <button class="button" v-on:click="openModal()">Add Report</button>
+      <button class="button button-primary" v-on:click="openModal()">Add Report</button>
     </nav>
   </div>
 </template>
@@ -26,22 +26,21 @@ export default class Header extends Vue {
 <style scoped lang="scss">
 .header {
   width: 100%;
-  border-top: 1px solid #dcdcdc;
   height: 67px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 22px;
+  padding: 0 40px;
+  border-bottom: 1px solid #dcdcdc;
   background-color: transparent;
 
   .header-logo-link {
     display: flex;
     align-items: center;
     height: 100%;
-    color: red;
 
     img {
-      height: 16px;
+      height: 60px;
     }
 
     &:hover {

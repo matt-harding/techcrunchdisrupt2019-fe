@@ -18,7 +18,8 @@
       </section>
       <footer class="modal-card-foot">
         <div class="buttons">
-          <button class="button button-primary" @click="closeModal()">Close</button>
+          <button class="button button-primary" @click="closeModal()">Submit</button>
+          <button class="button button-secondary" @click="closeModal()">Close</button>
         </div>
       </footer>
     </div>

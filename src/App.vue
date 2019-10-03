@@ -1,20 +1,23 @@
 <template>
   <div id="app">
-    <Header />
+    <Header/>
     <router-view/>
-    <Modal />
+    <Footer/>
+    <Modal/>
   </div>
 </template>
 
 <script>
 import Header from '@/components/Header.vue';
 import Modal from '@/components/Modal.vue';
+import Footer from '@/components/Footer.vue';
 
 export default {
   name: 'app',
   components: {
     Header,
-    Modal
+    Modal,
+    Footer
   }
 };
 </script>

@@ -1,17 +1,11 @@
 <template>  
   <div class="footer" :class="{'footer--fixed' : isFixed}">
     <a class="footer-logo-link" href="" target="_blank">
-    Team Logo
+      <img src="./../assets/tc-disrupt.png" alt="Project name logo" />
     </a>
     <nav class="footer-nav">
       <a target="_blank" href="">
-        Cookies<span class="visible-not-mobile"> Policy</span>
-      </a>
-      <a target="_blank" href="">
-        Privacy<span class="visible-not-mobile"> Statement</span>
-      </a>
-      <a target="_blank" href="">
-        Terms<span class="visible-not-mobile"> of Use</span>
+        By Jessica, Tuan &amp; Matt
       </a>
     </nav>
   </div>
@@ -41,7 +35,7 @@ export default class Footer extends Vue {
     align-items: center;
     justify-content: space-between;
     padding: 0 22px;
-    background-color: transparent;
+    background-color: #90A442;
 
     &--fixed {
       position: fixed;
@@ -50,7 +44,7 @@ export default class Footer extends Vue {
 
       .footer-nav {
         a {
-          color: #fff;
+          color: white;
 
           &:hover {
             opacity: .6;
