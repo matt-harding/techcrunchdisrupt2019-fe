@@ -40,7 +40,6 @@ export default class Graph extends Vue {
 
   public render_completed(stats: any) {
     this.$store.commit('setNodes', this.viz._nodes);
-    console.log('Completed with', stats.record_count, 'records');
   }
 
   get nodes() {

@@ -8,6 +8,14 @@ export interface ModalState {
     modalLoading: boolean;
 }
 
+export interface TestState {
+  animal: string;
+  type: string;
+  testDate: Date;
+  resultDate: Date;
+  outcome: string;
+}
+
 export interface RootState {
     nodes: NodesState;
     modal: ModalState;
