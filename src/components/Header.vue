@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <a class="header-logo-link" href target="_blank">
-      <img src="./../assets/Pawgraphlogo.svg" alt="Project name logo" />
+      <img src="./../assets/Pawgraphlogo.png" alt="Project name logo" />
     </a>
     <nav class="header-nav">
       <button class="button button-primary" v-on:click="openModal()">Add Report</button>
