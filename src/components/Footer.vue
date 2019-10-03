@@ -60,7 +60,7 @@ export default class Footer extends Vue {
       color: #fff;
 
       img {
-        height: 16px;
+        height: 60px;
       }
 
       &:hover {

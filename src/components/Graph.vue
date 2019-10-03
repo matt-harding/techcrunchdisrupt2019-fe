@@ -1,11 +1,13 @@
 <template>
+<div>
     <div id="viz"></div>
+    <button v-on:click="test()">Click me</button></div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-
 const NeoVis = require('neovis.js');
+
 @Component({
   components: {}
 })
@@ -33,7 +35,11 @@ export default class Graph extends Vue {
     };
     this.viz = new NeoVis.default(config);
     this.viz.render();
-    console.log(this.viz);
+  }
+
+  test() {
+    let xxx = this.viz;
+    debugger;
   }
 
   async mounted() {
