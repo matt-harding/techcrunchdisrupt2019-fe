@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue } from 'vue-property-decorator';
 import TestForm from '@/components/TestForm.vue';
 
 @Component({
@@ -50,7 +50,7 @@ export default class Modal extends Vue {
 
   private closeModal() {
     this.$store.commit('setSelectedNewsHeadlines', []);
-    this.$store.commit("setModalActive", false);
+    this.$store.commit('setModalActive', false);
   }
 }
 </script>

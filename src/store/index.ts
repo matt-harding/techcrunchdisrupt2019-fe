@@ -5,12 +5,12 @@ import { RootState } from './types';
 
 /** Import Modules */
 import { modal } from './modules/modal';
-import { general } from './modules/general';
+import { nodes } from './modules/nodes';
 Vue.use(Vuex);
 
 const store: StoreOptions<RootState> = {
   modules: {
-    general,
+    nodes,
     modal
   }
 };

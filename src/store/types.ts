@@ -1,5 +1,5 @@
-export interface GeneralState {
-  testData: [];
+export interface NodesState {
+  graphNodes: [];
 }
 
 export interface ModalState {
@@ -9,6 +9,6 @@ export interface ModalState {
 }
 
 export interface RootState {
-    general: GeneralState;
+    nodes: NodesState;
     modal: ModalState;
 }

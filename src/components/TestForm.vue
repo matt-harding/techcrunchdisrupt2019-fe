@@ -52,13 +52,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue } from 'vue-property-decorator';
 
 @Component({
   components: {}
 })
 export default class TestForm extends Vue {
-  async mounted() {}
 }
 </script>
 <style lang="scss" scoped>

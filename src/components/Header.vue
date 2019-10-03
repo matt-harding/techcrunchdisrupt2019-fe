@@ -11,14 +11,14 @@
 
 
 <script lang="ts">
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
+import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
 @Component({
   components: {}
 })
 export default class Header extends Vue {
   private openModal() {
-    this.$store.commit("setModalTitle", "Disease Reporting");
-    this.$store.commit("setModalActive", true);
+    this.$store.commit('setModalTitle', 'Disease Reporting');
+    this.$store.commit('setModalActive', true);
   }
 }
 </script>
