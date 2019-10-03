@@ -2,16 +2,25 @@
   <div style="height: calc(100vh - 134px);">
     <nav class="level">
       <!-- Left side -->
-      <div class="level-left"></div>
+      <div class="level-left">
+        <p class="level-item">
+          <button class="button button-primary" v-on:click="filterGraph()">
+            <span class="icon">
+              <i class="material-icons">filter_drama</i>
+            </span>
+            <span>Filter For Infection Risk</span>
+          </button>
+        </p>
+      </div>
 
       <!-- Right side -->
       <div class="level-right">
         <p class="level-item">
           <button class="button button-secondary" v-on:click="stabilizeGraph()">
-                <span class="icon">
-      <i class="material-icons">grain</i>
-    </span>
-    <span>Stabilize</span>
+            <span class="icon">
+              <i class="material-icons">grain</i>
+            </span>
+            <span>Stabilize</span>
           </button>
         </p>
       </div>
@@ -62,6 +71,10 @@ export default class Graph extends Vue {
     this.viz.stabilize();
   }
 
+  filterGraph() {
+    this.viz.renderWithCypher("MATCH (n)-[r:LINK]->(m) RETURN n,r,m")
+  }
+
   get nodes() {
     return this.$store.state.nodes.graphNodes;
   }
@@ -74,7 +87,7 @@ export default class Graph extends Vue {
 <style lang="scss">
 #viz {
   border: 2px solid #dcdcdc;
-  max-height: calc(100vh - 150px);
+  max-height: calc(100vh - 200px);
 }
 
 .level {
