@@ -18,21 +18,18 @@ export default class Graph extends Vue {
       server_user: "neo4j",
       server_password: "techcrunch",
       labels: {
-        //"Character": "name",
         Character: {
-          caption: "name",
-          size: "pagerank",
-          community: "community"
-          //"sizeCypher": "MATCH (n) WHERE id(n) = {id} MATCH (n)-[r]-() RETURN sum(r.weight) AS c"
+          caption: "id",
+          size: "centrality"
         }
       },
-      relationships: {
-        INTERACTS: {
-          thickness: "weight",
-          caption: false
-        }
-      },
-      initial_cypher: "MATCH (n)-[r:INTERACTS]->(m) RETURN n,r,m"
+      // relationships: {
+      //   INTERACTS: {
+      //     thickness: "weight",
+      //     caption: false
+      //   }
+      // },
+      initial_cypher: "MATCH (n)-[r:LINK]->(m) RETURN n,r,m"
     };
     this.viz = new NeoVis.default(config);
     this.viz.render();
@@ -45,4 +42,7 @@ export default class Graph extends Vue {
 }
 </script>
 <style lang="scss">
+  #viz {
+    border: 2px solid black;
+  }
 </style>
