@@ -13,7 +13,6 @@
 import { Component, Vue } from 'vue-property-decorator';
 import Graph from '@/components/Graph.vue';
 import Modal from '@/components/Modal.vue';
-import api from '@/api/api';
 
 @Component({
   components: {

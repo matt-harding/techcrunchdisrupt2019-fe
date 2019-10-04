@@ -5,6 +5,13 @@ export default function(apiPath: string, urlPath: string, data: string) {
     url: apiPath + urlPath,
     method: 'post',
     data,
+    auth: {
+      username: 'neo4j',
+      password: 'techcrunch'
+    },
+    headers: {
+      'Content-Type': 'application/json'
+    }
   })
     .then((res) => res.data,
       (err) => {

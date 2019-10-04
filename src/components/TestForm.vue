@@ -8,7 +8,7 @@
             <div class="select">
               <select v-model="animal">
                 <option value="">Select dropdown</option>
-                <option v-bind:value="node.id" v-for="node of nodes" v-bind:key="node.id">{{node.id}}</option>
+                <option v-bind:value="node.id" v-for="node of nodes" v-bind:key="node.id">{{node.label}}</option>
               </select>
             </div>
           </div>

@@ -1,28 +1,37 @@
-# ESG Classifier Frontend 
+# Paw.graph
 
-Using Vue CLI
+## Neo4j Commands
 
-## Project setup
-```
-yarn install
-```
+Add animal nodes
 
-### Compiles and hot-reloads for development
 ```
-yarn run serve
+LOAD CSV WITH HEADERS FROM "file:///TX_graph_data.csv" AS row
+MERGE (n:Animal {animal_id: row.id, name: row.name, org_id: row.org_id, type: row.type, species: row.species, age: row.age, status: row.status, publish_date: row.publish_date, status_changed_date: row.status_changed_date, shots_current: toBoolean(row.shots_current), org_name: row.org_name})
 ```
 
-### Compiles and minifies for production
+Add links (from backend repo)
+
 ```
-yarn run build
+node create_links.js
 ```
 
-### Lints and fixes files
+Calculate Pankrank scores
+
 ```
-yarn run lint
+CALL algo.pageRank('Animal', 'LINKS',{
+  iterations:20, dampingFactor:0.85, write: true, writeProperty:"pagerank", weightProperty: "weight"
+})
+YIELD nodes, iterations, loadMillis, computeMillis, writeMillis, dampingFactor, write, writeProperty
 ```
 
-### Run your unit tests
+Calculate communities
+
 ```
-yarn run test:unit
+CALL algo.labelPropagation('Animal', 'LINKS',
+  {iterations: 10, writeProperty: 'community', write: true, direction: 'OUTGOING'})
+YIELD nodes, iterations, loadMillis, computeMillis, writeMillis, write, writeProperty;
 ```
+
+
+
+

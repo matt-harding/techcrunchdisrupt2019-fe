@@ -31,6 +31,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import petgraphApi from '../api/petgraph.api';
 const NeoVis = require("neovis.js");
 
 @Component({
@@ -44,13 +45,14 @@ export default class Graph extends Vue {
       server_url: "bolt://localhost:7687",
       server_user: "neo4j",
       server_password: "techcrunch",
+      arrows: true,
       labels: {
-                    "Animal": {
-                        "caption": "name",
-                        "size": "pagerank",
-                        "community": "community"
-                    }
-                },
+        Animal: {
+          caption: "name",
+          size: "pagerank",
+          community: "community"
+        }
+      },
       relationships: {
         LINKS: {
           thickness: "weight",
@@ -73,7 +75,7 @@ export default class Graph extends Vue {
   }
 
   filterGraph() {
-    this.viz.renderWithCypher("MATCH p=()-->() RETURN p")
+    this.viz.renderWithCypher("MATCH p=()-->() RETURN p LIMIT 200");
   }
 
   get nodes() {
@@ -103,6 +105,6 @@ canvas {
 }
 
 .vis-network {
-    max-height: calc(100vh - 200px);
+  max-height: calc(100vh - 200px);
 }
 </style>

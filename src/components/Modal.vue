@@ -28,6 +28,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import petgraphApi from '../api/petgraph.api';
 import TestForm from '@/components/TestForm.vue';
 
 @Component({
@@ -48,9 +49,13 @@ export default class Modal extends Vue {
     return this.$store.state.modal.modalLoading;
   }
 
+  private async submitTest() {
+    let response = await petgraphApi.addDiseaseToAnimal(this.$store.state.test.animal);
+  }
+
   private closeModal() {
-    this.$store.commit('setSelectedNewsHeadlines', []);
     this.$store.commit('setModalActive', false);
+    this.$store.commit('setAnimal', '');
   }
 }
 </script>
