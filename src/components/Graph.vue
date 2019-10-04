@@ -25,13 +25,21 @@
         </p>
       </div>
     </nav>
-    <div id="viz"></div>
+    <div class="loading-overlay" v-if="modalLoading">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div id="viz" v-else></div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import petgraphApi from '../api/petgraph.api';
+import petgraphApi from "../api/petgraph.api";
 const NeoVis = require("neovis.js");
 
 @Component({
@@ -40,6 +48,7 @@ const NeoVis = require("neovis.js");
 export default class Graph extends Vue {
   public viz: any;
   public draw() {
+    this.$store.commit("setModalLoading", true);
     const config = {
       container_id: "viz",
       server_url: "bolt://localhost:7687",
@@ -59,15 +68,20 @@ export default class Graph extends Vue {
           caption: false
         }
       },
-      initial_cypher: "MATCH p=()-->() RETURN p LIMIT 200"
+      initial_cypher: "MATCH p=()-->() RETURN p"
     };
     this.viz = new NeoVis.default(config);
     this.viz.registerOnEvent("completed", this.render_completed);
     this.viz.render();
   }
 
+  get modalLoading() {
+    return this.$store.state.modal.modalLoading;
+  }
+
   public render_completed(stats: any) {
     this.$store.commit("setNodes", this.viz._nodes);
+    this.$store.commit("setModalLoading", false);
   }
 
   stabilizeGraph() {
@@ -75,7 +89,9 @@ export default class Graph extends Vue {
   }
 
   filterGraph() {
-    this.viz.renderWithCypher("MATCH p=()-[r:DISTEMPER]->(n)-[:LINKS*1..2]->() RETURN p");
+    this.viz.renderWithCypher(
+      "MATCH p=()-[r:DISTEMPER]->(n)-[:LINKS*1..2]->() RETURN p"
+    );
   }
 
   get nodes() {

@@ -14,7 +14,7 @@
             <div></div>
           </div>
         </div>
-        <TestForm/>
+        <TestForm v-else/>
       </section>
       <footer class="modal-card-foot">
         <div class="buttons">
@@ -50,7 +50,11 @@ export default class Modal extends Vue {
   }
 
   private async submitTest() {
+    this.$store.commit('setModalLoading', true);
     let response = await petgraphApi.addDiseaseToAnimal(this.$store.state.test.animal);
+    this.$store.commit('setModalActive', false);
+    this.$store.commit('setAnimal', '');
+    this.$store.commit('setModalLoading', false);
   }
 
   private closeModal() {
