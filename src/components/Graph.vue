@@ -4,11 +4,19 @@
       <!-- Left side -->
       <div class="level-left">
         <p class="level-item">
-          <button class="button button-primary" v-on:click="filterGraph()">
+          <button id='filterButton' class="button button-primary" v-on:click="filterGraph()">
             <span class="icon">
               <i class="material-icons">bug_report</i>
             </span>
             <span>Filter For Infection Risk</span>
+          </button>
+        </p>
+        <p class="level-item">
+          <button id='filterButton' class="button button-secondary" v-on:click="allGraph()">
+            <span class="icon">
+              <i class="material-icons">graphic_eq</i>
+            </span>
+            <span>Show All Nodes</span>
           </button>
         </p>
       </div>
@@ -91,6 +99,12 @@ export default class Graph extends Vue {
   filterGraph() {
     this.viz.renderWithCypher(
       "MATCH p=()-[r:DISTEMPER]->(n)-[:LINKS*1..2]->() RETURN p"
+    );
+  }
+
+  allGraph() {
+    this.viz.renderWithCypher(
+      "MATCH p=()-->() RETURN p"
     );
   }
 

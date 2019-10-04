@@ -52,6 +52,7 @@ export default class Modal extends Vue {
   private async submitTest() {
     this.$store.commit('setModalLoading', true);
     let response = await petgraphApi.addDiseaseToAnimal(this.$store.state.test.animal);
+    let filterButton = document.getElementById('filterButton').click();
     this.$store.commit('setModalActive', false);
     this.$store.commit('setAnimal', '');
     this.$store.commit('setModalLoading', false);
