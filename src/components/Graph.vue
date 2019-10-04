@@ -75,7 +75,7 @@ export default class Graph extends Vue {
   }
 
   filterGraph() {
-    this.viz.renderWithCypher("MATCH p=()-->() RETURN p LIMIT 200");
+    this.viz.renderWithCypher("MATCH p=()-[r:DISTEMPER]->(n)-[:LINKS*1..2]->() RETURN p");
   }
 
   get nodes() {
